@@ -1,0 +1,13 @@
+{{!-- For passport --}}
+{{#if error}}
+    <div class="alert alert-danger">{{error}}</div>
+{{/if}}
+{{!-- For others --}}
+{{!-- For doing loop in handlebars --}}
+{{#each errors}}
+    {{!-- If there is error --}}
+    <div class="alert alert-danger"> {{text}} </div>
+
+{{else}}
+{{!-- Nothing --}}
+{{/each}}
