@@ -6,8 +6,8 @@
 
 <div class="card card-body">
     <h3>Edit Video Idea</h3>
-    <form action="/ideas/{{idea._id}}?_method=PUT" method="post">    {{!-- idea.id/resource?_method=PUT   from the method override middleware concept --}}
-        <input type="hidden" name="-method" value="PUT"> {{!-- hidden input from the method override middleware concept --}}
+    <form action="/ideas/{{idea._id}}?_method=PUT" method="post"> 
+        <input type="hidden" name="-method" value="PUT">
          <div class="form-group">
             <label for="title">Title</label>
             <input type="text" class="form-control" name="title" value="{{idea.title}}">

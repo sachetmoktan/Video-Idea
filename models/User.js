@@ -21,4 +21,4 @@ const UserSchema = new Schema ({
     }
 });
 
-mongoose.model('users', UserSchema);   // "ideas" points to IdeaSchema schema.
+mongoose.model('users', UserSchema); 

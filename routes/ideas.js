@@ -3,7 +3,6 @@ const router = express.Router();
 
 const mongoose = require('mongoose');
 
-// Using these curly braces{} , we can take any function name we want
 const {ensureAuthenticated} = require('../helpers/auth');
 
 
@@ -21,8 +20,8 @@ const Idea = mongoose.model('ideas');
 // Idea Index Route
 router.get('/', ensureAuthenticated, (req, res) => {
     Idea.find({user: req.user.id}).lean()    //Take Idea model and use find
-        .sort({date:'desc'})    //we will sort data by date in descending order. You can add it or remove it
-        .then(ideas => {   //Promise..   and it gives "ideas" from out database. We have access  to the result in "ideas" variable
+        .sort({date:'desc'})    //we will sort data by date in descending order.
+        .then(ideas => {   
             res.render('ideas/index', {ideas:ideas});
         });
 });
@@ -30,10 +29,10 @@ router.get('/', ensureAuthenticated, (req, res) => {
 
 // Add Idea Form
 router.get('/add', ensureAuthenticated, (req, res) => {
-    res.render('ideas/add');   //add.handlebars inside ideas folder inside views
+    res.render('ideas/add');
 });
 // Process form
-router.post('/', ensureAuthenticated, (req, res) => {   // /ideas ma store vayeko hunuparyo if form info is valid . else error vanera dekhaunuparyo
+router.post('/', ensureAuthenticated, (req, res) => {
     
     let errors = [];
 
@@ -69,7 +68,7 @@ router.get('/edit/:id', ensureAuthenticated, (req, res) => {
         _id: req.params.id
     }).lean()
       .then(idea => {
-        if(idea.user != req.user.id) {    //Euta ma login vayera arkoko link copy paste garera jana namilna ko lagi
+        if(idea.user != req.user.id) {   
             req.flash('error_msg', 'Not Authorized ...');
             res.redirect('/ideas');
         }

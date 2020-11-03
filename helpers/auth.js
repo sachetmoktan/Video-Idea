@@ -4,7 +4,7 @@ module.exports = {
             return next();
         }
         
-        req.flash('error_msg', 'Not Authorized');
+        req.flash('error_msg', 'You need to login first');
         res.redirect('/users/login')
     }
 }
